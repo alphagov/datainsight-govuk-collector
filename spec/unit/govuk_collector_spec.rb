@@ -2,16 +2,17 @@ require "spec_helper"
 
 describe "govuk collector" do
 
+  ARTEFACT_URL = "http://www.gov.uk/api/artefacts.json"
+
   it "should retrieve artefacts from govuk api" do
 
     artefacts = {
         results: []
     }
 
-    url = "http://www.gov.uk/api/artefacts.json"
-    FakeWeb.register_uri(:get, url, body: artefacts.to_json)
+    FakeWeb.register_uri(:get, ARTEFACT_URL, body: artefacts.to_json)
 
-    collector = GovUkCollector.new(url)
+    collector = GovUkCollector.new(ARTEFACT_URL)
 
     messages = collector.messages
 
@@ -29,10 +30,9 @@ describe "govuk collector" do
         ]
     }
 
-    url = "http://www.gov.uk/api/artefacts.json"
-    FakeWeb.register_uri(:get, url, body: artefacts.to_json)
+    FakeWeb.register_uri(:get, ARTEFACT_URL, body: artefacts.to_json)
 
-    collector = GovUkCollector.new(url)
+    collector = GovUkCollector.new(ARTEFACT_URL)
 
     messages = collector.messages
 

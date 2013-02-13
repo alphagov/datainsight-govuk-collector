@@ -6,6 +6,7 @@ class GovUkCollector
 
   def initialize(url)
     @url = URI(url)
+    @message_builder = MessageBuilder.new
   end
 
   def messages
@@ -17,7 +18,7 @@ class GovUkCollector
 
     response = client.get(@url.path)
 
-    response.data["results"].map { |artefact| MessageBuilder.new.build(artefact) }
+    response.data["results"].map { |artefact| @message_builder.build(artefact) }
   end
 
 end
