@@ -19,26 +19,13 @@ describe "govuk collector" do
   end
 
   it "should parse the retrieved artefact into a list of messages" do
+    MessageBuilder.any_instance.stub(:build).with("artefact").and_return(:message)
+
     artefacts = {
         results: [
-            {
-                format: "answer",
-                title: "Benefit Integrity Centres",
-                id: "https://www.gov.uk/api/benefit-integrity-centres.json",
-                web_url: "https://www.gov.uk/benefit-integrity-centres"
-            },
-            {
-                format: "guide",
-                title: "Road users requiring extra care (204 to 225)",
-                id: "https://www.gov.uk/api/road-users-requiring-extra-care-204-to-225.json",
-                web_url: "https://www.gov.uk/road-users-requiring-extra-care-204-to-225"
-            },
-            {
-                format: "answer",
-                title: "Legal rights for egg and sperm donors",
-                id: "https://www.gov.uk/api/legal-rights-for-egg-and-sperm-donors.json",
-                web_url: "https://www.gov.uk/legal-rights-for-egg-and-sperm-donors"
-            }
+            "artefact",
+            "artefact",
+            "artefact"
         ]
     }
 
@@ -50,6 +37,9 @@ describe "govuk collector" do
     messages = collector.messages
 
     messages.should have(3).messages
+    messages[0] == :message
+    messages[1] == :message
+    messages[2] == :message
   end
 
 end

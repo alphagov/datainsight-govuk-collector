@@ -10,4 +10,5 @@ group :development, :test do
   gem "rspec"
   gem "fakeweb"
   gem "ci_reporter"
+  gem "timecop"
 end

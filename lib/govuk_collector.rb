@@ -1,5 +1,6 @@
 require "uri"
 require "songkick/transport"
+require_relative "message_builder"
 
 class GovUkCollector
 
@@ -10,13 +11,13 @@ class GovUkCollector
   def messages
     client = Songkick::Transport::HttParty.new(
         "#{@url.scheme}://#{@url.host}",
-        user_agent: "Datainsight InsideGov Collector",
+        user_agent: "Data Insight GOV.UK Collector",
         timeout: 10
     )
 
     response = client.get(@url.path)
 
-    return response.data["results"]
+    response.data["results"].map { |artefact| MessageBuilder.new.build(artefact) }
   end
 
 end

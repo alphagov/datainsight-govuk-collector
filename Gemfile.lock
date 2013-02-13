@@ -37,6 +37,7 @@ GEM
     songkick-transport (0.1.6)
       multipart-post (>= 1.1.0)
       yajl-ruby (>= 1.1.0)
+    timecop (0.5.9.2)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -50,3 +51,4 @@ DEPENDENCIES
   rake
   rspec
   songkick-transport
+  timecop
