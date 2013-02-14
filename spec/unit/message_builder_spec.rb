@@ -13,7 +13,7 @@ describe "MessageBuilder parser" do
 
       message = MessageBuilder.new.build(artefact)
 
-      message[:envelope][:created_at].should == now
+      message[:envelope][:collected_at].should == now
       message[:envelope][:collector].should == "GOV.UK"
 
       message[:payload].should == artefact
