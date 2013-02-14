@@ -6,6 +6,7 @@ gem "datainsight_collector", "0.0.7"
 gem "songkick-transport"
 gem "httparty"
 gem "airbrake", "3.1.5"
+gem "whenever"
 
 group :development, :test do
   gem "rspec"
