@@ -5,11 +5,14 @@ require_relative "../config/initializers/errbit"
 module DataInsight
   module Collector
     def self.options
-      { url: "URL of artefacts json" }
+      {
+         url: "URL of artefacts json",
+        formats: "list of formats to collect, comma separated"
+      }
     end
 
     def self.collector(arguments)
-      GovUkCollector.new(arguments[:url])
+      GovUkCollector.new(arguments[:url], arguments[:formats].split(',').map(&:strip))
     end
 
     def self.queue_name(arguments)

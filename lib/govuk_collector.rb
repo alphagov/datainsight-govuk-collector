@@ -4,9 +4,10 @@ require_relative "message_builder"
 
 class GovUkCollector
 
-  def initialize(url)
+  def initialize(url, formats)
     @url = URI(url)
     @message_builder = MessageBuilder.new
+    @formats = formats
   end
 
   def messages
@@ -18,7 +19,10 @@ class GovUkCollector
 
     response = client.get(@url.path)
 
-    response.data["results"].map { |artefact| @message_builder.build(artefact) }
+    response
+      .data["results"]
+      .select { |artefact| @formats.include?(artefact["format"]) }
+      .map { |artefact| @message_builder.build(artefact) }
   end
 
 end
