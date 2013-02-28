@@ -1,8 +1,8 @@
 source :rubygems
-source "https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/"
+source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 
 gem "rake"
-gem "datainsight_collector", "0.0.7"
+gem "datainsight_collector", "0.0.9"
 gem "songkick-transport"
 gem "httparty"
 gem "airbrake", "3.1.5"
